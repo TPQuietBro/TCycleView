@@ -20,6 +20,8 @@ static NSString *const kCellID = @"kCellID";
 @end
 
 @implementation TCycleView
+
+#pragma mark - init
 + (instancetype)showCycleViewWithScrollDirection:(UICollectionViewScrollDirection)direction{
     return [[self alloc] initWithScrollDirection:direction];
 }
@@ -37,7 +39,7 @@ static NSString *const kCellID = @"kCellID";
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumLineSpacing = 0;
     flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    flowLayout.scrollDirection = self.direction;
     _flowLayout = flowLayout;
     
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLayout];
@@ -94,6 +96,9 @@ static NSString *const kCellID = @"kCellID";
 
 - (void)scrollViewDidEndDecelerating:(UICollectionView *)scrollView{
     NSLog(@"currentPage : %ld",self.currentPage);
+    if (self.sourceArray.count < 2) {
+        return;
+    }
     if (self.currentPage == 0) {
         [scrollView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.sourceArray.count - 2 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     } else if (self.currentPage == self.sourceArray.count - 1){
@@ -114,7 +119,7 @@ static NSString *const kCellID = @"kCellID";
         [_collectionView reloadData];
         _collectionView.hidden = YES;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
             self.collectionView.hidden = NO;
             NSLog(@"array:%@ contentoffset x : %lf page:%ld",self.sourceArray,self.collectionView.contentOffset.x,self.currentPage);
@@ -123,24 +128,19 @@ static NSString *const kCellID = @"kCellID";
 }
 #pragma mark - private
 
-- (NSInteger)currentDataIndexWithRow:(NSInteger)row{
-    NSInteger index = 0;
-    if (self.sourceArray.count > 1) {
-        if (row == 0) {
-            index = self.sourceArray.count - 1;
-        } else if (row == self.sourceArray.count - 1){
-            index = 0;
-        } else {
-            index = row - 1;
-        }
-    } else {
-        index = row;
-    }
-    return index;
-}
-
 - (NSInteger)currentPage{
-    NSInteger index = (self.collectionView.contentOffset.x + 0.5 * TViewWidth) / TViewWidth;
+    NSInteger index = 0;
+    switch (self.direction) {
+        case UICollectionViewScrollDirectionHorizontal:
+        {
+            index = (self.collectionView.contentOffset.x + 0.5 * TViewWidth) / TViewWidth;
+        }
+            break;
+        case UICollectionViewScrollDirectionVertical:
+        {
+            index = (self.collectionView.contentOffset.y + 0.5 * TViewHeight) / TViewHeight;
+        }
+    }
     return index;
 }
 
