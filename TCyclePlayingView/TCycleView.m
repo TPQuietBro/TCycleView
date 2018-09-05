@@ -8,6 +8,8 @@
 
 #import "TCycleView.h"
 #import "TCycleViewCell.h"
+#import "TPageControllConfigure.h"
+
 static NSString *const kCellID = @"kCellID";
 #define TViewWidth self.frame.size.width
 #define TViewHeight self.frame.size.height
@@ -111,7 +113,7 @@ static NSString *const kCellID = @"kCellID";
 }
 
 #pragma mark - getter / setter
-- (void)setSourceArray:(NSMutableArray *)sourceArray{
+- (void)setSourceArray:(NSMutableArray <NSString *>*)sourceArray{
     _sourceArray = sourceArray;
 
     if (self.sourceArray.count > 1) {

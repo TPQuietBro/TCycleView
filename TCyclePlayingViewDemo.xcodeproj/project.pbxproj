@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF2CBDEE213FFEF6002E6E03 /* TPageControllConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CBDED213FFEF6002E6E03 /* TPageControllConfigure.m */; };
 		AF3CC11F213E65CA005DBA69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3CC11E213E65CA005DBA69 /* AppDelegate.m */; };
 		AF3CC122213E65CA005DBA69 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3CC121213E65CA005DBA69 /* ViewController.m */; };
 		AF3CC125213E65CA005DBA69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF3CC123213E65CA005DBA69 /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF2CBDEC213FFEF6002E6E03 /* TPageControllConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPageControllConfigure.h; sourceTree = "<group>"; };
+		AF2CBDED213FFEF6002E6E03 /* TPageControllConfigure.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPageControllConfigure.m; sourceTree = "<group>"; };
 		AF3CC11A213E65CA005DBA69 /* TCyclePlayingViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCyclePlayingViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF3CC11D213E65CA005DBA69 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AF3CC11E213E65CA005DBA69 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -88,6 +91,8 @@
 				AF3CC135213E6977005DBA69 /* TCycleView.m */,
 				AF3CC13A213EB409005DBA69 /* TCycleViewCell.h */,
 				AF3CC13B213EB409005DBA69 /* TCycleViewCell.m */,
+				AF2CBDEC213FFEF6002E6E03 /* TPageControllConfigure.h */,
+				AF2CBDED213FFEF6002E6E03 /* TPageControllConfigure.m */,
 				AF3CC13D213EB81A005DBA69 /* TCycleIndicatorView.h */,
 				AF3CC13E213EB81A005DBA69 /* TCycleIndicatorView.m */,
 			);
@@ -167,6 +172,7 @@
 				AF3CC122213E65CA005DBA69 /* ViewController.m in Sources */,
 				AF3CC12D213E65CB005DBA69 /* main.m in Sources */,
 				AF3CC136213E6977005DBA69 /* TCycleView.m in Sources */,
+				AF2CBDEE213FFEF6002E6E03 /* TPageControllConfigure.m in Sources */,
 				AF3CC13C213EB409005DBA69 /* TCycleViewCell.m in Sources */,
 				AF3CC11F213E65CA005DBA69 /* AppDelegate.m in Sources */,
 				AF3CC13F213EB81A005DBA69 /* TCycleIndicatorView.m in Sources */,

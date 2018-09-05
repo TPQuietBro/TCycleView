@@ -11,17 +11,23 @@ typedef NS_ENUM(NSInteger,TCycleViewType) {
     TCycleViewTypeVertical, // 上下滑动轮播
     TCycleViewTypeHorizontal // 水平滑动轮播
 };
-@class TCycleView;
+@class TCycleView,TPageControllConfigure;
 
 @protocol TCycleViewDelegate<NSObject>
 - (void)cycleView:(TCycleView *)cycleView didSelectRowAtIndex:(NSInteger)row;
 @end
 
 @interface TCycleView : UIView
-
-@property (nonatomic, strong) NSMutableArray *sourceArray;
-@property (nonatomic, weak) id delegate;
+// 请求数据
+@property (nonatomic, strong) NSMutableArray<NSString *> *sourceArray;
+@property (nonatomic, weak) id<TCycleViewDelegate> delegate;
 @property (nonatomic, strong) void(^selectRowBlock)(TCycleView *cycleView,NSInteger index);
+// 定时器间隔
+@property (nonatomic, assign) NSTimeInterval timeInterval;
+// 是否允许滑动
+@property (nonatomic, assign) BOOL isAllowSwipeScroll;
+// 页面控制订制
+@property (nonatomic, strong) TPageControllConfigure *configure;
 
 /**
  Return a cycle play view
