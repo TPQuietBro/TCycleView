@@ -11,13 +11,23 @@ typedef NS_ENUM(NSInteger,TCycleViewType) {
     TCycleViewTypeVertical, // 上下滑动轮播
     TCycleViewTypeHorizontal // 水平滑动轮播
 };
+@class TCycleView;
+
+@protocol TCycleViewDelegate<NSObject>
+- (void)cycleView:(TCycleView *)cycleView didSelectRowAtIndex:(NSInteger)row;
+@end
+
 @interface TCycleView : UIView
 
-/**
- Create cycle view quickly
+@property (nonatomic, strong) NSMutableArray *sourceArray;
+@property (nonatomic, weak) id delegate;
+@property (nonatomic, strong) void(^selectRowBlock)(TCycleView *cycleView,NSInteger index);
 
- @param sources array of image url
- @return a cycle view
+/**
+ Return a cycle play view
+
+ @param direction playing direction
+ @return a cycle play view
  */
-+ (instancetype)showCycleViewWithSources:(NSArray <NSString *> *)sources scrollDirection:(UICollectionViewScrollDirection)direction;
++ (instancetype)showCycleViewWithScrollDirection:(UICollectionViewScrollDirection)direction;
 @end

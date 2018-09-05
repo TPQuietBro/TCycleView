@@ -10,16 +10,19 @@
 #import "TCycleView.h"
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    TCycleView *view = [TCycleView showCycleViewWithSources:@[@"1",@"2",@"3"] scrollDirection:UICollectionViewScrollDirectionHorizontal];
+    TCycleView *view = [TCycleView showCycleViewWithScrollDirection:UICollectionViewScrollDirectionHorizontal];
     view.frame = CGRectMake(20, 50, 200, 80);
     [self.view addSubview:view];
+    view.sourceArray = [@[@"1",@"2",@"3"] mutableCopy];
+    view.selectRowBlock = ^(TCycleView *cycleView, NSInteger index) {
+        NSLog(@"index : %ld",index);
+    };
 }
 
 
