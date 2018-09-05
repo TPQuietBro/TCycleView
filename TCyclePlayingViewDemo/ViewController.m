@@ -23,6 +23,14 @@
     view.selectRowBlock = ^(TCycleView *cycleView, NSInteger index) {
         NSLog(@"index : %ld",index);
     };
+    
+    TCycleView *view1 = [TCycleView showCycleViewWithScrollDirection:UICollectionViewScrollDirectionVertical];
+    view1.frame = CGRectMake(20, 150, 200, 80);
+    [self.view addSubview:view1];
+    view1.sourceArray = [@[@"1",@"2",@"3"] mutableCopy];
+    view1.selectRowBlock = ^(TCycleView *cycleView, NSInteger index) {
+        NSLog(@"index : %ld",index);
+    };
 }
 
 
