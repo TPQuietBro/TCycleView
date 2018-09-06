@@ -23,6 +23,7 @@
     view.selectRowBlock = ^(TCycleView *cycleView, NSInteger index) {
         NSLog(@"index : %ld",index);
     };
+
 }
 
 
