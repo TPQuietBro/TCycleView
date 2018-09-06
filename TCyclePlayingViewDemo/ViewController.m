@@ -16,14 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    TCycleView *view = [TCycleView showCycleViewWithScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    view.frame = CGRectMake(20, 50, 200, 80);
-    [self.view addSubview:view];
-    view.sourceArray = [@[@"1",@"2",@"3"] mutableCopy];
-    view.selectRowBlock = ^(TCycleView *cycleView, NSInteger index) {
+
+    TCycleView *view1 = [TCycleView showCycleViewWithScrollDirection:UICollectionViewScrollDirectionVertical];
+    view1.frame = CGRectMake(20, 150, 200, 80);
+    [self.view addSubview:view1];
+    view1.sourceArray = [@[@"1",@"2",@"3"] mutableCopy];
+    view1.selectRowBlock = ^(TCycleView *cycleView, NSInteger index) {
         NSLog(@"index : %ld",index);
     };
-
 }
 
 

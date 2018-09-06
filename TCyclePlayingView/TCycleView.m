@@ -19,6 +19,7 @@ static NSString *const kCellID = @"kCellID";
 @property (nonatomic, assign) UICollectionViewScrollDirection direction;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic,strong) NSTimer *cycleTimer;
 @end
 
 @implementation TCycleView
@@ -56,6 +57,23 @@ static NSString *const kCellID = @"kCellID";
     _collectionView = collectionView;
 }
 
+- (void)initTimer{
+    _cycleTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(scroll) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_cycleTimer forMode:NSRunLoopCommonModes];
+}
+
+- (void)scroll{
+    
+    [self scrollViewDidEndDecelerating:self.collectionView];
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentPage + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+}
+
+- (void)fireTimer{
+    [self.cycleTimer invalidate];
+    self.cycleTimer = nil;
+}
+
 - (void)layoutSubviews{
     [super layoutSubviews];
     _flowLayout.itemSize = CGSizeMake(TViewWidth, TViewHeight);
@@ -88,12 +106,16 @@ static NSString *const kCellID = @"kCellID";
     }
 }
 
-- (void)scrollViewDidScroll:(UICollectionView *)scrollView{
-    
+- (void)scrollViewWillBeginDragging:(UICollectionView *)scrollView{
+    if (self.cycleTimer) {
+        [self fireTimer];
+    }
 }
 
-- (void)scrollViewWillBeginDragging:(UICollectionView *)scrollView{
-
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (!self.cycleTimer) {
+        [self initTimer];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UICollectionView *)scrollView{
@@ -126,7 +148,9 @@ static NSString *const kCellID = @"kCellID";
             self.collectionView.hidden = NO;
             NSLog(@"array:%@ contentoffset x : %lf page:%ld",self.sourceArray,self.collectionView.contentOffset.x,self.currentPage);
         });
+        [self initTimer];
     }
+    
 }
 #pragma mark - private
 
