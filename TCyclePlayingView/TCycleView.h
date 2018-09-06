@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TPageControllConfigure.h"
+
 typedef NS_ENUM(NSInteger,TCycleViewType) {
     TCycleViewTypeVertical, // 上下滑动轮播
     TCycleViewTypeHorizontal // 水平滑动轮播
 };
-@class TCycleView,TPageControllConfigure;
+@class TCycleView;
 
 @protocol TCycleViewDelegate<NSObject>
 - (void)cycleView:(TCycleView *)cycleView didSelectRowAtIndex:(NSInteger)row;
@@ -26,7 +28,7 @@ typedef NS_ENUM(NSInteger,TCycleViewType) {
 @property (nonatomic, assign) NSTimeInterval timeInterval;
 // 是否允许滑动
 @property (nonatomic, assign) BOOL isAllowSwipeScroll;
-// 页面控制订制
+// pageControl订制
 @property (nonatomic, strong) TPageControllConfigure *configure;
 
 /**

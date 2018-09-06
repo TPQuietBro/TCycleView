@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class TPageControllConfigure;
+@protocol TPageControllConfigureDelegate<NSObject>
+- (void)pageControll:(TPageControllConfigure *)pageControll selectedIndex:(NSInteger)currentPage;
+@end
+
 @interface TPageControllConfigure : NSObject
-@property (nonatomic, strong) UIColor *bgColor;
-@property (nonatomic, strong) UIColor *selectedColor;
-@property (nonatomic, strong) UIImage *bgImage;
+@property (nonatomic, weak) id<TPageControllConfigureDelegate> delegate;
+@property (nonatomic, strong) UIColor *pageIndicatorTintColor;
+@property (nonatomic, strong) UIColor *currentPageIndicatorTintColor;
+@property (nonatomic, strong) NSString *pageIndicatorImageName;
+@property (nonatomic, strong) NSString *currentPageIndicatorImageName;
+@property (nonatomic, strong) UIPageControl *pageControll;
+@property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) NSInteger numberOfPage;
+@property (nonatomic, assign) CGRect frame;
 @end

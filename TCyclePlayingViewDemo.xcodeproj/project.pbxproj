@@ -16,7 +16,6 @@
 		AF3CC12D213E65CB005DBA69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3CC12C213E65CB005DBA69 /* main.m */; };
 		AF3CC136213E6977005DBA69 /* TCycleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3CC135213E6977005DBA69 /* TCycleView.m */; };
 		AF3CC13C213EB409005DBA69 /* TCycleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3CC13B213EB409005DBA69 /* TCycleViewCell.m */; };
-		AF3CC13F213EB81A005DBA69 /* TCycleIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3CC13E213EB81A005DBA69 /* TCycleIndicatorView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +35,6 @@
 		AF3CC135213E6977005DBA69 /* TCycleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCycleView.m; sourceTree = "<group>"; };
 		AF3CC13A213EB409005DBA69 /* TCycleViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCycleViewCell.h; sourceTree = "<group>"; };
 		AF3CC13B213EB409005DBA69 /* TCycleViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCycleViewCell.m; sourceTree = "<group>"; };
-		AF3CC13D213EB81A005DBA69 /* TCycleIndicatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCycleIndicatorView.h; sourceTree = "<group>"; };
-		AF3CC13E213EB81A005DBA69 /* TCycleIndicatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCycleIndicatorView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +90,6 @@
 				AF3CC13B213EB409005DBA69 /* TCycleViewCell.m */,
 				AF2CBDEC213FFEF6002E6E03 /* TPageControllConfigure.h */,
 				AF2CBDED213FFEF6002E6E03 /* TPageControllConfigure.m */,
-				AF3CC13D213EB81A005DBA69 /* TCycleIndicatorView.h */,
-				AF3CC13E213EB81A005DBA69 /* TCycleIndicatorView.m */,
 			);
 			path = TCyclePlayingView;
 			sourceTree = "<group>";
@@ -175,7 +170,6 @@
 				AF2CBDEE213FFEF6002E6E03 /* TPageControllConfigure.m in Sources */,
 				AF3CC13C213EB409005DBA69 /* TCycleViewCell.m in Sources */,
 				AF3CC11F213E65CA005DBA69 /* AppDelegate.m in Sources */,
-				AF3CC13F213EB81A005DBA69 /* TCycleIndicatorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

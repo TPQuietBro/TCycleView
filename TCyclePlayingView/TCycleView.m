@@ -8,7 +8,6 @@
 
 #import "TCycleView.h"
 #import "TCycleViewCell.h"
-#import "TPageControllConfigure.h"
 
 static NSString *const kCellID = @"kCellID";
 #define TViewWidth self.frame.size.width
@@ -119,7 +118,7 @@ static NSString *const kCellID = @"kCellID";
 }
 
 - (void)scrollViewDidEndDecelerating:(UICollectionView *)scrollView{
-    NSLog(@"currentPage : %ld",self.currentPage);
+    NSLog(@"currentPage : %ld",(long)self.currentPage);
     if (self.sourceArray.count < 2) {
         return;
     }
@@ -128,13 +127,16 @@ static NSString *const kCellID = @"kCellID";
     } else if (self.currentPage == self.sourceArray.count - 1){
         [scrollView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
-}
-
-- (void)scrollViewDidEndScrollingAnimation:(UICollectionView *)scrollView{
-    
+    self.configure.currentPage = self.currentPage;
 }
 
 #pragma mark - getter / setter
+
+- (void)setConfigure:(TPageControllConfigure *)configure{
+    _configure = configure;
+    [self addSubview:configure.pageControll];
+}
+
 - (void)setSourceArray:(NSMutableArray <NSString *>*)sourceArray{
     _sourceArray = sourceArray;
 
@@ -146,12 +148,12 @@ static NSString *const kCellID = @"kCellID";
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
             self.collectionView.hidden = NO;
-            NSLog(@"array:%@ contentoffset x : %lf page:%ld",self.sourceArray,self.collectionView.contentOffset.x,self.currentPage);
+            NSLog(@"array:%@ contentoffset x : %lf page:%ld",self.sourceArray,self.collectionView.contentOffset.x,(long)self.currentPage);
         });
         [self initTimer];
     }
-    
 }
+
 #pragma mark - private
 
 - (NSInteger)currentPage{
